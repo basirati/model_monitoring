@@ -1,0 +1,11 @@
+FROM python
+
+COPY requirements.txt /req/requirements.txt
+RUN pip install -r /req/requirements.txt
+
+COPY src /app
+WORKDIR app
+
+EXPOSE 5000
+
+CMD uvicorn app:app --port 5000
