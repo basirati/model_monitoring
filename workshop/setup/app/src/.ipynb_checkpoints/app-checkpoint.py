@@ -1,5 +1,8 @@
 import mlflow
+
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import HTMLResponse
+
 from prometheus_client import Gauge, Counter, Histogram, Summary, generate_latest
 
 app = FastAPI(title="DemoModelAPI")
@@ -7,18 +10,18 @@ app = FastAPI(title="DemoModelAPI")
 logged_model = 'model'
 loaded_model = mlflow.pyfunc.load_model(logged_model)
 
-@app.get('/metrics')
-def metrics():
-    return generate_latest()
-
 success_class_counter = Counter('success_class', 'Counting predictions for the success class')
 normal_class_counter = Counter('normal_class', 'Counting predictions for the normal class')
 items_gauge = Gauge('items_g', 'Gauge for value of items available in a store')
 customers_gauge = Gauge('customers_g', 'Gauge for value of daily customers count in a store')
 items_hist = Histogram('items_h', 'Hist for value of items available in a store',
-                           buckets=[1397, 1507, 1631, 1718, 1773, 1844, 1939, 2046, 2185])
+                           buckets=[1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750])
 customers_hist = Histogram('customers_h', 'Hist for value of daily customers count in a store',
-                            buckets=[440, 560, 650, 710, 780, 850, 925, 1020, 1140])
+                            buckets=[200, 400, 600, 800, 1000, 1200, 1400, 1600])
+
+@app.get('/metrics')
+def metrics():
+    return HTMLResponse(content=generate_latest(), status_code=200)
 
 @app.get('/predict')
 def predict(items: int, customers: int):

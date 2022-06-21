@@ -15,9 +15,9 @@ normal_class_counter = Counter('normal_class', 'Counting predictions for the nor
 items_gauge = Gauge('items_g', 'Gauge for value of items available in a store')
 customers_gauge = Gauge('customers_g', 'Gauge for value of daily customers count in a store')
 items_hist = Histogram('items_h', 'Hist for value of items available in a store',
-                           buckets=[1397, 1507, 1631, 1718, 1773, 1844, 1939, 2046, 2185])
+                           buckets=[1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750])
 customers_hist = Histogram('customers_h', 'Hist for value of daily customers count in a store',
-                            buckets=[440, 560, 650, 710, 780, 850, 925, 1020, 1140])
+                            buckets=[200, 400, 600, 800, 1000, 1200, 1400, 1600])
 
 @app.get('/metrics')
 def metrics():
