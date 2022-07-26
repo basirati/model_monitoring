@@ -1,6 +1,0 @@
-uvicorn
-fastapi
-sklearn
-mlflow
-prometheus-client
-
