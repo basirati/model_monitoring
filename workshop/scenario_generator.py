@@ -42,8 +42,8 @@ if __name__ == '__main__':
         call_predict(5, 100)
         time.sleep(5)
         # creating a load for five minutes with a data drift
-        mu_item, sigma_item = 300, 200 # mean and standard deviation
-        mu_customers, sigma_customers = 1000, 265 # mean and standard deviation
+        mu_item, sigma_item = 300, 100 # mean and standard deviation
+        mu_customers, sigma_customers = 1000, 100 # mean and standard deviation
         call_predict(5, 100)
     except Exception as e:
         print(e)
