@@ -1,8 +1,9 @@
-# model_monitoring
+# Model Monitoring using Prometheus and Grafana
 
-go to workshop/setup folder and run:
+This repo provides a tutorial on how to serve an ML model and monitor it using Prometheus and Grafana. You can follow the steps described in the workshop Jupyter notebook (workshop/workshop.ipynb) in the workshop folder.
 
-docker compose build
-docker compose up
+To quickly setup all containers including a FastAPI serving a model, Prometheus, and Grafana go to workshop/setup folder and run:
+- docker compose build
+- docker compose up
 
-that's all
+That's all.
