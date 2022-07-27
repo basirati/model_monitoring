@@ -7,13 +7,19 @@ from prometheus_client import Gauge, Counter, Histogram, Summary, generate_lates
 
 app = FastAPI(title="DemoModelAPI")
 
+# loading model
 logged_model_path = 'model'
 loaded_model = mlflow.pyfunc.load_model(logged_model_path)
 
+# counter for success class
 success_class_counter = Counter('success_class', 'Counting predictions for the success class')
+# counter for normal class
 normal_class_counter = Counter('normal_class', 'Counting predictions for the normal class')
-
+# guage for items count
 items_gauge = Gauge('items_g', 'Gauge for value of items available in a store')
+# TODO: add a guage for customers
+# TODO: add a histogram for items
+# TODO: add a histogram for customers
 
 
 @app.get('/metrics')
@@ -39,6 +45,8 @@ def predict(items: int, customers: int):
             normal_class_counter.inc()
         # exposing input data metrics
         items_gauge.set(items)
+        
+        # TODO: expose added metrics
 
         
         # return result in a json format
