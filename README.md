@@ -5,5 +5,3 @@ This repo provides a tutorial on how to serve an ML model and monitor it using P
 To quickly setup all containers including a FastAPI serving a model, Prometheus, and Grafana go to workshop/setup folder and run:
 - docker compose build
 - docker compose up
-
-That's all.
